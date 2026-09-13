@@ -25,30 +25,13 @@
 create extension if not exists "pgcrypto";
 
 -- ============================================================================
--- AUTH: domain-gated signup + Ops Hub session check
+-- AUTH: open public-demo signup + Ops Hub session check
 -- ============================================================================
--- Restricts new Supabase Auth accounts to the company's own email domain,
--- with one named demo/developer exception. A session existing at all means
--- access is granted -- the `staff` table is enrichment (name/role/initials),
--- never a login precondition.
-create or replace function enforce_stonebridge_domain()
-returns trigger
-language plpgsql
-security definer
-set search_path = public
-as $$
-begin
-  if new.email is null or lower(new.email) not like '%@stonebridgehomeenergy.com' then
-    raise exception 'Sign-up is restricted to @stonebridgehomeenergy.com accounts';
-  end if;
-  return new;
-end;
-$$;
-
+-- No domain gate: this is a public demo, so anyone can sign up with any
+-- email. A session existing at all means access is granted -- the `staff`
+-- table is enrichment (name/role/initials), never a login precondition.
 drop trigger if exists enforce_stonebridge_domain_trigger on auth.users;
-create trigger enforce_stonebridge_domain_trigger
-before insert on auth.users
-for each row execute function enforce_stonebridge_domain();
+drop function if exists enforce_stonebridge_domain();
 
 -- Every RLS policy below gates on this. Kept as a single, swappable choke
 -- point -- re-implement against a different auth model without touching policies.
@@ -59,7 +42,7 @@ stable
 security definer
 set search_path = public
 as $$
-  select coalesce(auth.jwt() ->> 'email', '') ilike '%@stonebridgehomeenergy.com';
+  select auth.jwt() ->> 'email' is not null;
 $$;
 
 -- ============================================================================

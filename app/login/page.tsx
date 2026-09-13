@@ -40,13 +40,13 @@ export default function LoginPage() {
           </div>
         </div>
         <h1>Sign in</h1>
-        <div className="sub">Sign in with your @stonebridgehomeenergy.com account.</div>
+        <div className="sub">Sign in, or create an account to try the demo.</div>
         <form onSubmit={handleSubmit}>
           <label htmlFor="login-email">Email</label>
           <input
             id="login-email"
             type="email"
-            placeholder="you@stonebridgehomeenergy.com"
+            placeholder="you@example.com"
             autoComplete="username"
             required
             value={email}

@@ -80,7 +80,7 @@ export default function AboutPage() {
         </div>
         <div className="card stat-card blue">
           <div className="label">Sign-in</div>
-          <div className="value" style={{ fontSize: 18 }}>@stonebridgehomeenergy.com</div>
+          <div className="value" style={{ fontSize: 18 }}>Open sign-up</div>
           <div className="sub">Email and password, via Supabase Auth</div>
         </div>
         <div className="card stat-card green">
@@ -143,12 +143,11 @@ export default function AboutPage() {
         <div className="card">
           <ul style={{ margin: 0, paddingLeft: 18, fontSize: 12, lineHeight: 1.7, color: "var(--muted)" }}>
             <li>
-              Only <strong style={{ color: "var(--text)" }}>@stonebridgehomeenergy.com</strong> addresses can
-              register. That check runs in the database, not just on the login screen.
+              This is a public demo &mdash; anyone with the link can sign up with any email address.
             </li>
             <li>
-              You create your own account by signing up with your work email; an administrator
-              confirms your staff record before you see live data.
+              Your staff record is created automatically the moment you sign up, from the name and
+              role you enter on that form.
             </li>
             <li>
               There are two access levels &mdash; <strong style={{ color: "var(--text)" }}>Staff</strong>{" "}

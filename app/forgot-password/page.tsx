@@ -47,7 +47,7 @@ export default function ForgotPasswordPage() {
             <input
               id="forgot-email"
               type="email"
-              placeholder="you@stonebridgehomeenergy.com"
+              placeholder="you@example.com"
               autoComplete="username"
               required
               value={email}

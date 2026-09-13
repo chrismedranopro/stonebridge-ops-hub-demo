@@ -5,12 +5,6 @@ import type { Session } from "@supabase/supabase-js";
 import { supabase } from "./supabase";
 import type { Staff } from "./types";
 
-const ALLOWED_DOMAIN = "@stonebridgehomeenergy.com";
-
-function isAllowedEmail(email: string): boolean {
-  return email.endsWith(ALLOWED_DOMAIN);
-}
-
 interface AuthResult {
   ok: boolean;
   error?: string;
@@ -88,11 +82,9 @@ function fallbackStaff(userId: string, email: string): Staff {
 // directly on his own christina@stonebridgehomeenergy.com row, 2026-08-26).
 let allowStaffCreateForEmail: string | null = null;
 
-// The only real gate on WHO CAN SIGN UP is Supabase itself: a Postgres
-// trigger on auth.users (enforce_stonebridge_domain_trigger) refuses to
-// create an account for any email outside @stonebridgehomeenergy.com. But an
-// auth.users row, once created, exists forever regardless of what happens in
-// `staff` -- so `staff` is what actually gates APP ACCESS. A session with no
+// This is a public demo: anyone can sign up with any email, no domain gate.
+// An auth.users row, once created, exists forever regardless of what happens
+// in `staff` -- so `staff` is what actually gates APP ACCESS. A session with no
 // matching active `staff` row is unauthorized, full stop: either the account
 // was never provisioned, or access was revoked (row deleted or
 // active=false). The only legitimate way to get a first row is through
@@ -171,12 +163,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   async function signUp(email: string, password: string, profile: SignupProfile): Promise<AuthResult> {
     const trimmed = email.trim().toLowerCase();
-    if (!isAllowedEmail(trimmed)) {
-      return { ok: false, error: `Use your ${ALLOWED_DOMAIN} email address.` };
-    }
-    // Client-side domain check above is just UX — the real gate is the
-    // enforce_stonebridge_domain_trigger on auth.users, which would reject
-    // this insert regardless of what the frontend checked.
     // Name/role ride along as auth user_metadata so resolveStaff can create
     // the real staff row once a session exists (immediately, or after the
     // confirmation link is clicked — whichever comes first). Flagging the

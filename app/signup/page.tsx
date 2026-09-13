@@ -59,7 +59,7 @@ export default function SignupPage() {
           </div>
         </div>
         <h1>Create account</h1>
-        <div className="sub">Only @stonebridgehomeenergy.com email addresses can sign up.</div>
+        <div className="sub">This is a public demo — sign up with any email to try it out.</div>
 
         {confirmationSent ? (
           <p className="muted">
@@ -101,7 +101,7 @@ export default function SignupPage() {
             <input
               id="signup-email"
               type="email"
-              placeholder="you@stonebridgehomeenergy.com"
+              placeholder="you@example.com"
               autoComplete="username"
               required
               value={email}

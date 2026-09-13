@@ -73,8 +73,7 @@ insert into staff (full_name, email, role, initials, access_level, active) value
 ('Devon Park',         'devon@stonebridgehomeenergy.com',     'Intake Coordinator', 'DP', 'staff', true),
 ('Renee Ibarra',       'renee@stonebridgehomeenergy.com',     'Compliance Analyst', 'RI', 'staff', true),
 ('Marcus Webb',        'marcus@stonebridgehomeenergy.com',    'Pricing Lead', 'MW', 'staff', true),
-('Jordan Ellis',       'jordan@stonebridgehomeenergy.com',    'Founder', 'JE', 'leadership', true),
-('Chris Medrano (Demo Access)', 'chrismedrano.pro@gmail.com', 'Demo Administrator', 'CM', 'leadership', true);
+('Jordan Ellis',       'jordan@stonebridgehomeenergy.com',    'Founder', 'JE', 'leadership', true);
 
 -- ============================================================================
 -- PROJECTS (fictional homeowners / properties)

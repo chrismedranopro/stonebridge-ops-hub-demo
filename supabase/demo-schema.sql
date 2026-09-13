@@ -38,10 +38,7 @@ security definer
 set search_path = public
 as $$
 begin
-  if new.email is null or (
-    lower(new.email) not like '%@stonebridgehomeenergy.com'
-    and lower(new.email) <> 'chrismedrano.pro@gmail.com'
-  ) then
+  if new.email is null or lower(new.email) not like '%@stonebridgehomeenergy.com' then
     raise exception 'Sign-up is restricted to @stonebridgehomeenergy.com accounts';
   end if;
   return new;
@@ -62,8 +59,7 @@ stable
 security definer
 set search_path = public
 as $$
-  select coalesce(auth.jwt() ->> 'email', '') ilike '%@stonebridgehomeenergy.com'
-      or lower(coalesce(auth.jwt() ->> 'email', '')) = 'chrismedrano.pro@gmail.com';
+  select coalesce(auth.jwt() ->> 'email', '') ilike '%@stonebridgehomeenergy.com';
 $$;
 
 -- ============================================================================

@@ -6,14 +6,9 @@ import { supabase } from "./supabase";
 import type { Staff } from "./types";
 
 const ALLOWED_DOMAIN = "@stonebridgehomeenergy.com";
-// Developer/testing access only — mirrors the exception in the
-// enforce_stonebridge_domain_trigger DB trigger, which is the real gate.
-// Not a client account; remove once a real @stonebridgehomeenergy.com address exists
-// for whoever is building/maintaining this app.
-const DEV_ACCESS_EMAILS = ["chrismedrano.pro@gmail.com"];
 
 function isAllowedEmail(email: string): boolean {
-  return email.endsWith(ALLOWED_DOMAIN) || DEV_ACCESS_EMAILS.includes(email);
+  return email.endsWith(ALLOWED_DOMAIN);
 }
 
 interface AuthResult {

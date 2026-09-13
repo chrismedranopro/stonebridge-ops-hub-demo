@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" width="280" height="80">
+  <rect x="0" y="8" width="64" height="64" rx="14" fill="#0891b2"/>
+  <path d="M32 22 L48 32 L48 52 L32 62 L16 52 L16 32 Z" fill="none" stroke="#ffffff" stroke-width="3.5"/>
+  <circle cx="32" cy="42" r="7" fill="#ffffff"/>
+  <text x="78" y="38" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#0f172a">Cascadia</text>
+  <text x="78" y="60" font-family="Arial, Helvetica, sans-serif" font-size="13" letter-spacing="1.5" fill="#475569">HOME ENERGY SOLUTIONS</text>
+</svg>

@@ -130,7 +130,7 @@ export function SettingsView() {
         <div className="card stat-card">
           <div className="label">Access tier</div>
           <div className="value" style={{ fontSize: 18, textTransform: "capitalize" }}>{user.access_level}</div>
-          <div className="sub">Managed by Cascadia administrators</div>
+          <div className="sub">Managed by Stonebridge administrators</div>
         </div>
         <div className="card stat-card green">
           <div className="label">Account status</div>
@@ -139,8 +139,8 @@ export function SettingsView() {
         </div>
         <div className="card stat-card">
           <div className="label">Workspace</div>
-          <div className="value" style={{ fontSize: 18 }}>GHEP</div>
-          <div className="sub">Cascadia Ops Hub</div>
+          <div className="value" style={{ fontSize: 18 }}>ESRP</div>
+          <div className="sub">Stonebridge Ops Hub</div>
         </div>
       </div>
 

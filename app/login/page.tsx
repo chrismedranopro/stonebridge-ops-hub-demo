@@ -35,18 +35,18 @@ export default function LoginPage() {
         <div className="logo-row">
           <div className="logo-box">MD</div>
           <div>
-            <div style={{ fontWeight: 700, fontSize: 13 }}>Cascadia</div>
+            <div style={{ fontWeight: 700, fontSize: 13 }}>Stonebridge</div>
             <div style={{ color: "var(--muted2)", fontSize: 9 }}>Operations Hub</div>
           </div>
         </div>
         <h1>Sign in</h1>
-        <div className="sub">Sign in with your @cascadiahomeenergy.com account.</div>
+        <div className="sub">Sign in with your @stonebridgehomeenergy.com account.</div>
         <form onSubmit={handleSubmit}>
           <label htmlFor="login-email">Email</label>
           <input
             id="login-email"
             type="email"
-            placeholder="you@cascadiahomeenergy.com"
+            placeholder="you@stonebridgehomeenergy.com"
             autoComplete="username"
             required
             value={email}

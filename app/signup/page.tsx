@@ -54,12 +54,12 @@ export default function SignupPage() {
         <div className="logo-row">
           <div className="logo-box">MD</div>
           <div>
-            <div style={{ fontWeight: 700, fontSize: 13 }}>Cascadia</div>
+            <div style={{ fontWeight: 700, fontSize: 13 }}>Stonebridge</div>
             <div style={{ color: "var(--muted2)", fontSize: 9 }}>Operations Hub</div>
           </div>
         </div>
         <h1>Create account</h1>
-        <div className="sub">Only @cascadiahomeenergy.com email addresses can sign up.</div>
+        <div className="sub">Only @stonebridgehomeenergy.com email addresses can sign up.</div>
 
         {confirmationSent ? (
           <p className="muted">
@@ -91,7 +91,7 @@ export default function SignupPage() {
             <input
               id="signup-role"
               type="text"
-              placeholder="e.g. GHEP Estimator"
+              placeholder="e.g. ESRP Estimator"
               autoComplete="organization-title"
               required
               value={role}
@@ -101,7 +101,7 @@ export default function SignupPage() {
             <input
               id="signup-email"
               type="email"
-              placeholder="you@cascadiahomeenergy.com"
+              placeholder="you@stonebridgehomeenergy.com"
               autoComplete="username"
               required
               value={email}

@@ -14,7 +14,7 @@ const draw = (text, size, font = regular, color = rgb(0.1, 0.1, 0.12)) => {
 };
 
 draw("Sample Terms of Service", 20, bold);
-draw("Cascadia Home Energy Solutions — Demo Document", 11, regular, rgb(0.4, 0.4, 0.45));
+draw("Stonebridge Home Energy Solutions — Demo Document", 11, regular, rgb(0.4, 0.4, 0.45));
 y -= 10;
 draw("This is placeholder text for a portfolio demo.", 11);
 draw("It does not constitute a real contract or legal agreement, and is included only", 11);

@@ -20,7 +20,7 @@ export interface AttentionItem {
   intakeApplicationIds?: string[];
   /** portal_status_events.id rows a "portal_unmatched" card covers — drives Mark Reviewed. */
   portalEventIds?: string[];
-  /** Direct link into the GHEP portal's own application record, when a portal_application_id is on file. */
+  /** Direct link into the ESRP portal's own application record, when a portal_application_id is on file. */
   portalUrl?: string;
   /** Box Sign prepare_url for a "box_sign_ready" item — staff opens this and clicks Send to actually reach the homeowner. Clears itself once the Box Sign Completion Watcher marks the job signed/declined. */
   boxSignUrl?: string;

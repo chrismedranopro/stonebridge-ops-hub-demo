@@ -13,8 +13,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Cascadia — Operations Hub",
-  description: "Cascadia Home Energy Solutions — Energy Efficiency Program Division Operations Hub",
+  title: "Stonebridge — Operations Hub",
+  description: "Stonebridge Home Energy Solutions — Energy Efficiency Program Division Operations Hub",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

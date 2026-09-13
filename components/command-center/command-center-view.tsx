@@ -57,7 +57,7 @@ function formatCurrency(value: number): string {
 // Mirrors add-lead-form.tsx's constraints (db/schema.sql check constraints).
 const LEAD_SOURCES: { value: string; label: string }[] = [
   { value: "unknown", label: "Unknown / not specified" },
-  { value: "portal", label: "GHEP Portal" },
+  { value: "portal", label: "ESRP Portal" },
   { value: "direct_call", label: "Direct Call" },
   { value: "direct_email", label: "Direct Email" },
   { value: "referral", label: "Referral" },
@@ -1205,7 +1205,7 @@ export function CommandCenterView() {
                         type="text"
                         value={trackerIdDraft}
                         onChange={(e) => setTrackerIdDraft(e.target.value)}
-                        placeholder="e.g. GHEP-2026-0001"
+                        placeholder="e.g. ESRP-2026-0001"
                         style={{ flex: 1, background: "var(--panel)", border: "1px solid var(--border)", borderRadius: 6, padding: "8px 10px", color: "var(--text)", fontSize: 12, fontFamily: "var(--mono)" }}
                       />
                       <button
@@ -1265,7 +1265,7 @@ export function CommandCenterView() {
                     )}
                     <ScheduleControl
                       key={`site-visit-${selected.projectId}-${selected.siteVisitScheduledFor}-${selected.siteVisitCompletedAt}`}
-                      label="Cascadia Site Visit Schedule"
+                      label="Stonebridge Site Visit Schedule"
                       scheduledFor={selected.siteVisitScheduledFor}
                       completedAt={selected.siteVisitCompletedAt}
                       onSave={saveSiteVisitSchedule}

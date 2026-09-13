@@ -8,7 +8,7 @@ import type { PipelineStage } from "@/lib/types";
 // Mirrors db/schema.sql's projects.lead_source check constraint.
 const LEAD_SOURCES: { value: string; label: string }[] = [
   { value: "unknown", label: "Unknown / not specified" },
-  { value: "portal", label: "GHEP Portal" },
+  { value: "portal", label: "ESRP Portal" },
   { value: "direct_call", label: "Direct Call" },
   { value: "direct_email", label: "Direct Email" },
   { value: "referral", label: "Referral" },
@@ -17,7 +17,7 @@ const LEAD_SOURCES: { value: string; label: string }[] = [
 
 // Mirrors the projects.ami_tier check constraint. The intake SOP requires AMI
 // tier at lead intake alongside name/address/contacts/track; caps per the
-// GHEP program requirements.
+// ESRP program requirements.
 const AMI_TIERS: { value: string; label: string }[] = [
   { value: "unknown", label: "Unknown — not yet determined" },
   { value: "tier_1", label: "Tier 1 (<80% AMI — 100% covered)" },

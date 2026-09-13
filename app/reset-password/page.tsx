@@ -43,7 +43,7 @@ export default function ResetPasswordPage() {
         <div className="logo-row">
           <div className="logo-box">MD</div>
           <div>
-            <div style={{ fontWeight: 700, fontSize: 13 }}>Cascadia</div>
+            <div style={{ fontWeight: 700, fontSize: 13 }}>Stonebridge</div>
             <div style={{ color: "var(--muted2)", fontSize: 9 }}>Operations Hub</div>
           </div>
         </div>

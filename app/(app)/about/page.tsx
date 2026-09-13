@@ -1,7 +1,7 @@
 // Reference page (sidebar -> Reference -> About this build). Plain-language
-// orientation for Cascadia staff: what the Hub is, what each area does, which
+// orientation for Stonebridge staff: what the Hub is, what each area does, which
 // system owns which record, how sign-in works, and what is deliberately not in
-// Phase 1. Content is grounded in knowledge/phase1-scope.md, the GHEP Operations
+// Phase 1. Content is grounded in knowledge/phase1-scope.md, the ESRP Operations
 // SOP + Ops Hub Staff Manual (v2.0), and lib/auth.tsx. No operational data here,
 // so this stays a static server component.
 
@@ -29,8 +29,8 @@ const AREAS: [string, string][] = [
 ];
 
 const SYSTEMS: [string, string][] = [
-  ["GHEP / SERO Contractor Portal", "Application, reservation, submission, and payment status"],
-  ["Outlook — office@cascadiahomeenergy.com", "Shared program correspondence, homeowner-review drafts, and portal notifications"],
+  ["ESRP / SERO Contractor Portal", "Application, reservation, submission, and payment status"],
+  ["Outlook — office@stonebridgehomeenergy.com", "Shared program correspondence, homeowner-review drafts, and portal notifications"],
   ["Box — office@ account", "Project source documents, submitted estimates, Box Sign preparation, and signed files"],
   ["Fieldwire", "Site visits, field forms, photos, and inspections"],
   ["Snugg Pro", "Modeled energy audit, recommended work, technical specifications, and savings evidence used during HOMES and HEAR review"],
@@ -60,7 +60,7 @@ export default function AboutPage() {
       <div className="card" style={{ marginBottom: 18 }}>
         <h2 style={{ marginTop: 0, marginBottom: 8 }}>What the Operations Hub is</h2>
         <p className="muted" style={{ margin: 0, fontSize: 12, lineHeight: 1.6 }}>
-          The Operations Hub is Cascadia&rsquo;s internal workspace for the GreenPath Home Energy Program (GHEP) program. It brings lead intake, project and portal status, compliance
+          The Operations Hub is Stonebridge&rsquo;s internal workspace for the Energy Saver Rebate Program (ESRP) program. It brings lead intake, project and portal status, compliance
           documents, and estimate drafting into one place, so the same work isn&rsquo;t tracked
           across separate tools. It coordinates the systems the program already runs on &mdash; it
           does not replace them, and it does not set program policy.
@@ -75,12 +75,12 @@ export default function AboutPage() {
         </div>
         <div className="card stat-card">
           <div className="label">Production site</div>
-          <div className="value" style={{ fontSize: 18 }}>ops.cascadiahomeenergy.com</div>
+          <div className="value" style={{ fontSize: 18 }}>ops.stonebridgehomeenergy.com</div>
           <div className="sub">Deployed continuously</div>
         </div>
         <div className="card stat-card blue">
           <div className="label">Sign-in</div>
-          <div className="value" style={{ fontSize: 18 }}>@cascadiahomeenergy.com</div>
+          <div className="value" style={{ fontSize: 18 }}>@stonebridgehomeenergy.com</div>
           <div className="sub">Email and password, via Supabase Auth</div>
         </div>
         <div className="card stat-card green">
@@ -143,7 +143,7 @@ export default function AboutPage() {
         <div className="card">
           <ul style={{ margin: 0, paddingLeft: 18, fontSize: 12, lineHeight: 1.7, color: "var(--muted)" }}>
             <li>
-              Only <strong style={{ color: "var(--text)" }}>@cascadiahomeenergy.com</strong> addresses can
+              Only <strong style={{ color: "var(--text)" }}>@stonebridgehomeenergy.com</strong> addresses can
               register. That check runs in the database, not just on the login screen.
             </li>
             <li>
@@ -152,7 +152,7 @@ export default function AboutPage() {
             </li>
             <li>
               There are two access levels &mdash; <strong style={{ color: "var(--text)" }}>Staff</strong>{" "}
-              and <strong style={{ color: "var(--text)" }}>Leadership</strong>. Cascadia
+              and <strong style={{ color: "var(--text)" }}>Leadership</strong>. Stonebridge
               administrators manage your level; it is shown on your Settings page.
             </li>
             <li>Change your password any time from Settings. Sign out on shared or borrowed computers.</li>
@@ -190,7 +190,7 @@ export default function AboutPage() {
             <li>Supplier, ENERGY STAR, AHRI-certificate, and specification links remain internal. The homeowner PDF shows verified product information without internal URLs or cost-formula lines.</li>
             <li>
               The Hub shows the workflow; it does not create eligibility, rebate, construction, or
-              compliance policy. Cascadia&rsquo;s approved SOP is the authority &mdash; if the Hub and
+              compliance policy. Stonebridge&rsquo;s approved SOP is the authority &mdash; if the Hub and
               the SOP disagree, stop and follow the SOP.
             </li>
             <li>The government contracting pipeline is not part of this system.</li>
@@ -224,7 +224,7 @@ export default function AboutPage() {
         <div className="card">
           <ul style={{ margin: 0, paddingLeft: 18, fontSize: 12, lineHeight: 1.7, color: "var(--muted)" }}>
             <li>
-              The full step-by-step guide is the <strong style={{ color: "var(--text)" }}>GHEP
+              The full step-by-step guide is the <strong style={{ color: "var(--text)" }}>ESRP
               Operations SOP and Ops Hub Staff Manual</strong> (v2.0).
             </li>
             <li>Questions about a process go to your Operations / Project Coordinator.</li>
@@ -237,7 +237,7 @@ export default function AboutPage() {
       </section>
 
       <p className="muted" style={{ fontSize: 10, fontFamily: "var(--mono)", marginTop: 4 }}>
-        Cascadia Ops Hub &middot; Phase 1 &mdash; Operations Foundation
+        Stonebridge Ops Hub &middot; Phase 1 &mdash; Operations Foundation
         {buildRef ? ` · build ${buildRef}${env && env !== "production" ? ` (${env})` : ""}` : ""}
       </p>
     </div>

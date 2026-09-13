@@ -5,10 +5,10 @@ import type { Session } from "@supabase/supabase-js";
 import { supabase } from "./supabase";
 import type { Staff } from "./types";
 
-const ALLOWED_DOMAIN = "@cascadiahomeenergy.com";
+const ALLOWED_DOMAIN = "@stonebridgehomeenergy.com";
 // Developer/testing access only — mirrors the exception in the
-// enforce_cascadia_domain_trigger DB trigger, which is the real gate.
-// Not a client account; remove once a real @cascadiahomeenergy.com address exists
+// enforce_stonebridge_domain_trigger DB trigger, which is the real gate.
+// Not a client account; remove once a real @stonebridgehomeenergy.com address exists
 // for whoever is building/maintaining this app.
 const DEV_ACCESS_EMAILS = ["chrismedrano.pro@gmail.com"];
 
@@ -90,12 +90,12 @@ function fallbackStaff(userId: string, email: string): Staff {
 // time here" and silently re-provision one -- which meant deleting (or
 // deactivating) someone's staff row never actually revoked their access, it
 // just self-healed on their next login (Chris found this by testing it
-// directly on his own christina@cascadiahomeenergy.com row, 2026-08-26).
+// directly on his own christina@stonebridgehomeenergy.com row, 2026-08-26).
 let allowStaffCreateForEmail: string | null = null;
 
 // The only real gate on WHO CAN SIGN UP is Supabase itself: a Postgres
-// trigger on auth.users (enforce_cascadia_domain_trigger) refuses to
-// create an account for any email outside @cascadiahomeenergy.com. But an
+// trigger on auth.users (enforce_stonebridge_domain_trigger) refuses to
+// create an account for any email outside @stonebridgehomeenergy.com. But an
 // auth.users row, once created, exists forever regardless of what happens in
 // `staff` -- so `staff` is what actually gates APP ACCESS. A session with no
 // matching active `staff` row is unauthorized, full stop: either the account
@@ -180,7 +180,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return { ok: false, error: `Use your ${ALLOWED_DOMAIN} email address.` };
     }
     // Client-side domain check above is just UX — the real gate is the
-    // enforce_cascadia_domain_trigger on auth.users, which would reject
+    // enforce_stonebridge_domain_trigger on auth.users, which would reject
     // this insert regardless of what the frontend checked.
     // Name/role ride along as auth user_metadata so resolveStaff can create
     // the real staff row once a session exists (immediately, or after the

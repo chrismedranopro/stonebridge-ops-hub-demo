@@ -230,7 +230,7 @@ export default function ActionCenterPage() {
                     className="tb-pill"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    Open in GHEP Portal →
+                    Open in ESRP Portal →
                   </a>
                 )}
                 {item.boxSignUrl && (

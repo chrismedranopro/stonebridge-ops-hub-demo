@@ -37,7 +37,7 @@ export function Sidebar() {
       <div className="brand">
         <div className="logo-box">MD</div>
         <div>
-          <div className="logo-text">Cascadia</div>
+          <div className="logo-text">Stonebridge</div>
           <small>Operations Hub</small>
         </div>
       </div>

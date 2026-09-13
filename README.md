@@ -1,8 +1,8 @@
-# Cascadia Ops Hub (Demo)
+# Stonebridge Ops Hub (Demo)
 
 A portfolio demo of an operations hub built for home energy-efficiency contractors — lead pipeline, AI-assisted estimating with a multi-step human approval flow, compliance document tracking, portal status ingestion, and an action-center inbox that surfaces what needs attention.
 
-**This is a sanitized demo, not a real company.** "Cascadia Home Energy Solutions" is a fictional brand, and every homeowner, staff member, and project shown is synthetic sample data seeded for demonstration. It's built on the architecture and workflow design of a real production system I built for an energy-efficiency program operator, with all client-identifying details, real people, and live integrations removed or replaced.
+**This is a sanitized demo, not a real company.** "Stonebridge Home Energy Solutions" is a fictional brand, and every homeowner, staff member, and project shown is synthetic sample data seeded for demonstration. It's built on the architecture and workflow design of a real production system I built for an energy-efficiency program operator, with all client-identifying details, real people, and live integrations removed or replaced.
 
 ## Stack
 

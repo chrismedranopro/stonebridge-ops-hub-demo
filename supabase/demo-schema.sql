@@ -1,13 +1,13 @@
 -- ============================================================================
--- Cascadia Ops Hub -- Demo Schema (Supabase / Postgres)
+-- Stonebridge Ops Hub -- Demo Schema (Supabase / Postgres)
 -- ============================================================================
 -- Consolidated, sanitized schema for a standalone portfolio-demo project.
 -- Rebuilt from a real production app's incremental migration history, with
 -- every table folded to its FINAL column set (no historical ALTERs replayed)
 -- so this applies cleanly top-to-bottom on an empty database.
 --
--- Fictional identity used throughout: Cascadia Home Energy Solutions, running
--- the GreenPath Home Energy Program (GHEP). Federal/public program terms
+-- Fictional identity used throughout: Stonebridge Home Energy Solutions, running
+-- the Energy Saver Rebate Program (ESRP). Federal/public program terms
 -- (HEAR, HOMES, ENERGY STAR, AHRI) are real program names and kept as-is.
 --
 -- Sanitization notes (see accompanying report for the full list):
@@ -31,7 +31,7 @@ create extension if not exists "pgcrypto";
 -- with one named demo/developer exception. A session existing at all means
 -- access is granted -- the `staff` table is enrichment (name/role/initials),
 -- never a login precondition.
-create or replace function enforce_cascadia_domain()
+create or replace function enforce_stonebridge_domain()
 returns trigger
 language plpgsql
 security definer
@@ -39,19 +39,19 @@ set search_path = public
 as $$
 begin
   if new.email is null or (
-    lower(new.email) not like '%@cascadiahomeenergy.com'
+    lower(new.email) not like '%@stonebridgehomeenergy.com'
     and lower(new.email) <> 'chrismedrano.pro@gmail.com'
   ) then
-    raise exception 'Sign-up is restricted to @cascadiahomeenergy.com accounts';
+    raise exception 'Sign-up is restricted to @stonebridgehomeenergy.com accounts';
   end if;
   return new;
 end;
 $$;
 
-drop trigger if exists enforce_cascadia_domain_trigger on auth.users;
-create trigger enforce_cascadia_domain_trigger
+drop trigger if exists enforce_stonebridge_domain_trigger on auth.users;
+create trigger enforce_stonebridge_domain_trigger
 before insert on auth.users
-for each row execute function enforce_cascadia_domain();
+for each row execute function enforce_stonebridge_domain();
 
 -- Every RLS policy below gates on this. Kept as a single, swappable choke
 -- point -- re-implement against a different auth model without touching policies.
@@ -62,7 +62,7 @@ stable
 security definer
 set search_path = public
 as $$
-  select coalesce(auth.jwt() ->> 'email', '') ilike '%@cascadiahomeenergy.com'
+  select coalesce(auth.jwt() ->> 'email', '') ilike '%@stonebridgehomeenergy.com'
       or lower(coalesce(auth.jwt() ->> 'email', '')) = 'chrismedrano.pro@gmail.com';
 $$;
 
@@ -403,7 +403,7 @@ create table estimates (
   approved_at timestamptz,
 
   terms_version text not null default 'v1.0-demo',
-  terms_document_path text not null default '/legal/GHEP-Terms-of-Service-v1.0-demo.pdf',
+  terms_document_path text not null default '/legal/ESRP-Terms-of-Service-v1.0-demo.pdf',
   package_snapshot jsonb,
   ai_gap_resolution text,
 
@@ -652,7 +652,7 @@ create table estimate_pricing_assumptions (
   travel_percent numeric(6,2) not null default 1,
   material_split_percent numeric(6,2) not null default 55,
   labor_split_percent numeric(6,2) not null default 45,
-  source_workbook text not null default 'Cascadia current estimating workbook',
+  source_workbook text not null default 'Stonebridge current estimating workbook',
   updated_at timestamptz not null default now(),
   updated_by_staff_id uuid references staff(id),
   check (material_split_percent + labor_split_percent = 100)
@@ -1030,9 +1030,9 @@ begin
   if not found then raise exception 'Estimator case not found'; end if;
   if w.latest_estimate_id is not null then return w.latest_estimate_id; end if;
   if w.readiness_status<>'ready_for_draft' then raise exception 'All required inputs must be extracted before drafting'; end if;
-  perform pg_advisory_xact_lock(hashtext('cascadia-estimate-number'));
-  select coalesce(max((regexp_match(estimate_number,'^EST-GHEP-([0-9]+)$'))[1]::int),0)+1 into n from estimates where estimate_number~'^EST-GHEP-[0-9]+$';
-  eno:='EST-GHEP-'||lpad(n::text,4,'0');
+  perform pg_advisory_xact_lock(hashtext('stonebridge-estimate-number'));
+  select coalesce(max((regexp_match(estimate_number,'^EST-ESRP-([0-9]+)$'))[1]::int),0)+1 into n from estimates where estimate_number~'^EST-ESRP-[0-9]+$';
+  eno:='EST-ESRP-'||lpad(n::text,4,'0');
   insert into estimates(project_id,estimate_number,version,program_track,status,pricing_status,delivery_provider,delivery_status,ai_confidence,ai_gap_flags)
     values(w.project_id,eno,1,w.program_track,'ai_draft','in_progress','box_sign','not_ready',0,'[]') returning id into eid;
   for source in select distinct on(d.document_type) d.* from estimate_source_documents d
@@ -1572,7 +1572,7 @@ begin
 end;
 $$;
 
-create or replace function recalculate_ghep_rebate(p_estimate_id uuid)
+create or replace function recalculate_esrp_rebate(p_estimate_id uuid)
 returns numeric language plpgsql security definer set search_path=public as $$
 declare e estimates%rowtype; tier text; coverage numeric:=0; calculated numeric:=0; project_total numeric:=0; scope record; scope_cost numeric; cap numeric; weatherization_cost numeric:=0;
 begin
@@ -1597,7 +1597,7 @@ begin
   return round(calculated,2);
 end $$;
 
-comment on function recalculate_ghep_rebate(uuid) is 'Conservative GHEP cap calculator; never establishes income eligibility or program approval.';
+comment on function recalculate_esrp_rebate(uuid) is 'Conservative ESRP cap calculator; never establishes income eligibility or program approval.';
 
 create or replace function enable_estimate_review_simulation(
   p_estimate_id uuid,
@@ -2054,7 +2054,7 @@ grant execute on function mark_estimate_portal_uploaded(uuid) to authenticated, 
 grant execute on function create_ai_estimate_draft(uuid) to authenticated, service_role;
 grant execute on function recompute_estimate_validation(uuid) to authenticated, service_role;
 grant execute on function activate_marcus_final_fallback(uuid,text) to authenticated, service_role;
-grant execute on function recalculate_ghep_rebate(uuid) to authenticated, service_role;
+grant execute on function recalculate_esrp_rebate(uuid) to authenticated, service_role;
 grant execute on function rename_estimate_for_migration(uuid,text,text) to authenticated, service_role;
 grant execute on function apply_estimate_pricing_assumptions(uuid) to authenticated, service_role;
 

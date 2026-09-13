@@ -1,4 +1,4 @@
-// Cascadia is based in Richmond, NC — all staff-facing dates/times should
+// Stonebridge is based in Richmond, NC — all staff-facing dates/times should
 // read in the client's local timezone, not whatever timezone the viewer's
 // browser happens to be set to.
 export const CLIENT_TIME_ZONE = "America/New_York";
@@ -31,7 +31,7 @@ export function clientDateInputValue(iso: string): string {
   return `${value.year}-${value.month}-${value.day}`;
 }
 
-// Convert a YYYY-MM-DD chosen in Cascadia's calendar to midnight in its
+// Convert a YYYY-MM-DD chosen in Stonebridge's calendar to midnight in its
 // timezone, including the correct EST/EDT offset for that date.
 export function clientDateInputToIso(value: string): string {
   const [year, month, day] = value.split("-").map(Number);

@@ -156,7 +156,7 @@ export function EstimateCostEditor({
     const { error: calculationError } = await supabase.rpc("apply_estimate_pricing_assumptions", { p_estimate_id: estimateId });
     if (calculationError) { setAssumptionStatus(calculationError.message); return; }
     setAssumptionStatus("Saved and applied to the estimate");
-    await supabase.rpc("recalculate_ghep_rebate",{p_estimate_id:estimateId});await supabase.rpc("recompute_estimate_validation",{p_estimate_id:estimateId});await onSaved();
+    await supabase.rpc("recalculate_esrp_rebate",{p_estimate_id:estimateId});await supabase.rpc("recompute_estimate_validation",{p_estimate_id:estimateId});await onSaved();
   }
 
   function startEdit(line: EstimateLineItem) {
@@ -263,7 +263,7 @@ export function EstimateCostEditor({
       if (calculationError) setAssumptionStatus("Labor saved. Select the county and save workbook assumptions once to enable automatic equipment and soft costs.");
       else setAssumptionStatus("Labor saved; Equipment / Minor Tools and soft costs refreshed automatically.");
     }
-    await supabase.rpc("recalculate_ghep_rebate", { p_estimate_id: estimateId });
+    await supabase.rpc("recalculate_esrp_rebate", { p_estimate_id: estimateId });
     await supabase.rpc("recompute_estimate_validation", { p_estimate_id: estimateId });
     await onSaved();
   }

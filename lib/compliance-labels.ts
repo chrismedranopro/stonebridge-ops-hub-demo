@@ -1,8 +1,8 @@
 import type { ComplianceDocStatus } from "./types";
 
 // Order matches db/schema.sql's compliance_doc_types.lifecycle_stage check
-// constraint, which is itself the GHEP program checklist's own stage order
-// (GHEP program requirements, Stages 1-3, plus the SOP pre/post split).
+// constraint, which is itself the ESRP program checklist's own stage order
+// (ESRP program requirements, Stages 1-3, plus the SOP pre/post split).
 export const LIFECYCLE_STAGE_ORDER = [
   "pre_qualification",
   "pre_reservation",

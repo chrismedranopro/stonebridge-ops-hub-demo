@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabase";
 import { formatClientDate } from "@/lib/timezone";
 import type { PipelineCard } from "@/lib/types";
 
-// AMI tier caps per the GHEP program requirements; the intake SOP requires
+// AMI tier caps per the ESRP program requirements; the intake SOP requires
 // this at intake.
 const AMI_TIER_LABELS: Record<string, string> = {
   tier_1: "Tier 1 (<80% AMI — 100% covered)",
@@ -326,7 +326,7 @@ export function SnapshotDrawer({
             {portalError && <p style={{ color: "var(--red-text)", fontSize: 11 }}>{portalError}</p>}
             {portalStatusCode.startsWith("assessment_") && (
               <p className="muted" style={{ margin: "4px 0 8px", fontSize: 10, lineHeight: 1.5 }}>
-                SOP mapping: keep the internal stage at Pre-Qualification Pending. Do not schedule a Cascadia site visit until the HOMES audit is on file.
+                SOP mapping: keep the internal stage at Pre-Qualification Pending. Do not schedule a Stonebridge site visit until the HOMES audit is on file.
               </p>
             )}
             <div className="snap-row">
